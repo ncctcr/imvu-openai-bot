@@ -19,7 +19,7 @@
     border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
     border-top-color: transparent;
     border-radius: 4px;
-    padding: 15px 13px 15px;
+    padding: 12px 13px 12px;
     width: 100%;
     height: inherit;
     color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
@@ -110,7 +110,7 @@
 .pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span,
 .pure-material-textfield-outlined > textarea:not(:focus):placeholder-shown + span {
     font-size: inherit;
-    line-height: 68px;
+    line-height: 60px;
 }
 
 .pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span::before,

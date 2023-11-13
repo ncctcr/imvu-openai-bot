@@ -25,6 +25,15 @@
         margin-bottom: 15px;
       }
 
+      .inline-block {
+        display: flex;
+        margin-bottom: 15px;
+      }
+            
+      .inline-block > *:not(:last-child) {
+          margin-right: 10px;
+      }
+
     </style>
   </head>
   <body>
@@ -36,9 +45,6 @@
           <span>Source</span>
         </div>
       </a>
-    </div>
-    <div class="block">
-      <p>Make sure you have the imvu chat tab open before launching it</p>
     </div>
     <div class="block">
       <label class="pure-material-textfield-outlined">
@@ -66,18 +72,19 @@
         </div>
       </div>
     </div>
-    <div class="block">
+    <div class="inline-block">
       <label class="pure-material-textfield-outlined">
         <input id="delayedResponse" placeholder=" " type="number" value="5">
         <span>Delayed response (in sec)</span>
       </label>
-    </div>
-
-    <div class="block">
       <label class="pure-material-textfield-outlined">
         <input id="responseSize" placeholder=" " type="number" value="100">
-        <span>Maximum response size (bot text size)</span>
+        <span>Bot text size</span>
       </label>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <i class="fa-solid fa-triangle-exclamation" style="color: #c52828; margin-right: 5px"></i>
+      <p style="color: #c52828">Make sure that you have the IMVU chat tab open before launching it</p>
     </div>
     <button class="button" id="toggleBot">START</button>
     <script src="popup.js"></script>
