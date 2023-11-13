@@ -1,0 +1,77 @@
+/* select starting stylings ------------------------------*/
+.select {
+    font-family:
+      'Roboto','Helvetica','Arial',sans-serif;
+      position: relative;
+      width: 100%;
+  }
+  
+  .select-text {
+      position: relative;
+      font-family: inherit;
+      background-color: transparent;
+      width: 100%;
+      padding: 15px 13px 15px;
+      font-size: 16px;
+      border-radius: 4px;
+  }
+  
+  /* Remove focus */
+  .select-text:focus {
+    outline: none;
+    border: 1px solid #2196f3;
+  }
+  
+    /* Use custom arrow */
+  .select .select-text {
+    appearance: none;
+    -webkit-appearance:none;
+    /* color: gray; */
+  }
+  
+  .select:after {
+      position: absolute;
+      top: 24px;
+      right: 10px;
+      /* Styling the down arrow */
+      width: 0;
+      height: 0;
+      padding: 0;
+      content: '';
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(0, 0, 0, 0.12);
+    
+      pointer-events: none;
+  }
+  
+  /* LABEL ======================================= */
+  .select-label {
+    color: rgba(0,0,0, 0.5);
+    background: white;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    padding: 0 5px;
+    left: 10px;
+    top: 12px;
+    transition: 0.2s ease all;
+  }
+  
+  
+  /* active state */
+  .select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+      color: #2196f3;
+      top: -8px;
+      transition: 0.2s ease all;
+      font-size: 14px;
+  }
+  
+  .select-text:valid:not(focus) ~ .select-label {
+    color: rgba(0,0,0, 0.5);
+    background: white;
+  }
+  .select-text:valid:focus ~ .select-label {
+    color: #2196f3;
+  }

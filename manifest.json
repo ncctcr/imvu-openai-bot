@@ -1,0 +1,23 @@
+{
+    "name": "IMVU OpenAI Bot",
+    "description": "This extension allows you to connect a bot instead of you",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_icon": { 
+            "16": "/images/imvu.png",
+            "32": "/images/imvu.png",
+            "64": "/images/imvu.png"
+        },
+        "default_popup": "./popup.html"
+    },
+    "icons": {
+        "16": "/images/imvu.png",
+        "32": "/images/imvu.png",
+        "64": "/images/imvu.png"
+    },
+    "permissions": ["activeTab", "scripting", "storage"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}

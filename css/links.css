@@ -1,0 +1,22 @@
+.source {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 600px;
+    padding: 8px;
+    margin-left: 10px;
+    background: rgb(223, 223, 223);
+}
+
+.source i {
+    font-size: 15px;
+    color: black;
+}
+
+.source span {
+    margin-left: 5px;
+}
+
+a {
+    text-decoration: none;
+}

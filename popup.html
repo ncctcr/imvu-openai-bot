@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  	<meta charset="UTF-8">
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/links.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style type="text/css">
+      body {
+        min-width: 400px;
+      }
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .title h1 {
+        margin: 5px 0;
+      }
+
+      .block {
+        margin-bottom: 15px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="title">
+      <h1>IMVU: Bot (OpenAI) </h1>
+      <a href="https://github.com/ncctcr/imvu-openai-bot" target="_blank" title="GitHub">
+        <div class="source">
+          <i class="fa-brands fa-github"></i>
+          <span>Source</span>
+        </div>
+      </a>
+    </div>
+    <div class="block">
+      <p>Make sure you have the imvu chat tab open before launching it</p>
+    </div>
+    <div class="block">
+      <label class="pure-material-textfield-outlined">
+        <input id="apiKey" placeholder=" " type="string">
+        <span>OpenAI API Key</span>
+    </label>
+    </div>
+    <div class="block">
+      <label class="pure-material-textfield-outlined">
+        <input id="props" placeholder=" " type="string" value="Ты IMVU пользователь. Твой пол: мужской, Возраст: 20. Просто поддерживай разговор как обычный пользователь который хочет общаться. Шути с людьми. Не упоминай что ты исскуственный интелект. Отвечай на том языке на котором к тебе общаются">
+        <span>Props (bot behavior)</span>
+    </label>
+    </div>
+    <div class="block">
+      <div class="wrap">
+        <div class="select">
+          <select class="select-text" id="model">
+            <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+            <option value="gpt-3.5-turbo-0613">gpt-3.5-turbo-0613</option>
+            <option value="gpt-3.5-turbo-0301">gpt-3.5-turbo-0301</option>
+            <option value="gpt-4-0314">gpt-4-0314</option>
+            <option value="gpt-4-32k-0314">gpt-4-32k-0314</option>
+          </select>
+          <label class="select-label">Model</label>
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <label class="pure-material-textfield-outlined">
+        <input id="delayedResponse" placeholder=" " type="number" value="5">
+        <span>Delayed response (in sec)</span>
+      </label>
+    </div>
+
+    <div class="block">
+      <label class="pure-material-textfield-outlined">
+        <input id="responseSize" placeholder=" " type="number" value="100">
+        <span>Maximum response size (bot text size)</span>
+      </label>
+    </div>
+    <button class="button" id="toggleBot">START</button>
+    <script src="popup.js"></script>
+  </body>
+</html>

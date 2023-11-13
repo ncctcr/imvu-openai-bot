@@ -1,0 +1,25 @@
+.button {
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: rgb(69, 187, 69);
+    color: white;
+}
+
+.button:hover {
+    background: rgb(59, 156, 59)
+}
+
+.button:disabled,
+button[disabled]{
+  /* border: 1px solid #999999; */
+  border: none;
+  background: #cccccc;
+  color: #666666;
+  cursor: default
+}
