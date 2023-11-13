@@ -11,6 +11,7 @@ This extension allows users to automate their chat processes using OpenAI's adva
 6. Wait for someone to write to the chat room
 7. After someone has written to the chat room, the script will start waiting for new messages, which will be expected within %delayed response% seconds. If there are no new messages for %delayed response% then we send a request (This is to avoid spam)
 8. Once the script receives the response from the request, it will automatically insert it into the input and send the message in chat
+9. To stop the bot we open the bot menu and press the 'STOP' button
 
 ## Requirements
 - <b>API Key</b> from [OpenAI](https://platform.openai.com/) 
