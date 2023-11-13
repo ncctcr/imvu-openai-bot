@@ -3,4 +3,4 @@ IMVU OpenAI Bot is a browser extension designed to interact with the popular IMV
 
 
 Install: 
-chrome://extentions -> developer mode -> download the unpacked extension
+Got to chrome://extentions -> switch to 'developer mode' -> click on 'download the unpacked extension'
