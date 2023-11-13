@@ -3,6 +3,8 @@
 This extension allows users to automate their chat processes using OpenAI's advanced language models such as gpt-3.5-turbo, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301, gpt-4-0314, gpt-4-0314, gpt-4-32k-0314.
 
 ## How it looks like
+The picture below shows the menu that appears when we click on the extension icon
+
 ![image](https://github.com/ncctcr/imvu-openai-bot/assets/37658170/e480574e-ee38-4b40-aa67-aff20ee4fe00)
 
 
