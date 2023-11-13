@@ -1,6 +1,6 @@
 # IMVU: Bot (OpenAI)
 <b>IMVU: Bot (OpenAI)</b> - is a browser extension designed to interact with the popular IMVU virtual chat service using artificial intelligence from OpenAI. 
-This extension allows users to automate their chat processes using OpenAI's advanced language models such as gpt-3.5-turbo and gpt-4.
+This extension allows users to automate their chat processes using OpenAI's advanced language models such as gpt-3.5-turbo, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301, gpt-4-0314, gpt-4-0314, gpt-4-32k-0314.
 
 ## How it works
 1. Open IMVU in a browser
