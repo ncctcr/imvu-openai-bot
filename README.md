@@ -2,6 +2,9 @@
 <b>IMVU: Bot (OpenAI)</b> - is a browser extension designed to interact with the popular IMVU virtual chat service using artificial intelligence from OpenAI. 
 This extension allows users to automate their chat processes using OpenAI's advanced language models such as gpt-3.5-turbo, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301, gpt-4-0314, gpt-4-0314, gpt-4-32k-0314.
 
+## Requirements
+- <b>API Key</b> from [OpenAI](https://platform.openai.com/) 
+
 ## How it looks like
 The picture below shows the menu that appears when we click on the extension icon
 
@@ -26,9 +29,6 @@ The picture below shows the menu that appears when we click on the extension ico
 7. After someone has written to the chat room, the script will start waiting for new messages, which will be expected within %delayed response% seconds. If there are no new messages for %delayed response% then we send a request (This is to avoid spam)
 8. Once the script receives the response from the request, it will automatically insert it into the input and send the message in chat
 9. To stop the bot we open the bot menu and press the 'STOP' button
-
-## Requirements
-- <b>API Key</b> from [OpenAI](https://platform.openai.com/) 
 
 ## Install
 1. Download project
