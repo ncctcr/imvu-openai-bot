@@ -8,6 +8,14 @@ The picture below shows the menu that appears when we click on the extension ico
 ![image](https://github.com/ncctcr/imvu-openai-bot/assets/37658170/e480574e-ee38-4b40-aa67-aff20ee4fe00)
 
 
+|  Field | Description |
+|---|---|
+| Open AI API Key | This is a unique character string provided by OpenAI that allows your application or program to communicate with the OpenAI API (Application Programming Interface). Simply put, it is like a password or identifier that allows your code to send requests to the GPT (Generative Pre-trained Transformer) artificial intelligence on the OpenAI servers and receive responses. |
+| Props (bot behavior) |  This is the field where we set the behavior of our bot. (For example: You are an IMVU user who wants to communicate. You like to joke around and try to make friends with people) |
+| Model | Versions of models used for text generation in chat-like interfaces. The main component here is GPT (Generative Pre-trained Transformer), which is a type of neural network designed to generate text based on pre-training on large amounts of data. |
+| Delayed response (in sec) | This field provides a number in seconds by which the bot will wait 5 seconds after the last message. If there is a new chat message within 5 seconds - the stopwatch resets and starts the report over again. If there is no new message within 5 seconds - we take all new messages and send them to the bot with one request |
+| Bot text size | This field is responsible for the size of the message from the bot. If we specify for example 5 characters, then the message from the bot will be returned with 5 characters. |
+
 ## How it works
 1. Open IMVU in a browser
 2. Go to some room
