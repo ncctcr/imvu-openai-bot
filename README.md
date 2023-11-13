@@ -37,3 +37,6 @@ The picture below shows the menu that appears when we click on the extension ico
 4. Click on <b>'Download the unpacked extension'</b>
 5. Select folder with that project
 6. Enjoy
+
+## Bugs
+- The START/STOP button sometimes does not show the current state because of this we can start the bot several times.
