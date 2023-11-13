@@ -40,3 +40,4 @@ The picture below shows the menu that appears when we click on the extension ico
 
 ## Bugs
 - The <b>START/STOP</b> button sometimes does not show the current state because of this we can start the bot several times.
+- Does not clear the chat when you click on the START button (to avoid replying to old messages).
