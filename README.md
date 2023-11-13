@@ -39,4 +39,4 @@ The picture below shows the menu that appears when we click on the extension ico
 6. Enjoy
 
 ## Bugs
-- The START/STOP button sometimes does not show the current state because of this we can start the bot several times.
+- The <b>START/STOP</b> button sometimes does not show the current state because of this we can start the bot several times.
