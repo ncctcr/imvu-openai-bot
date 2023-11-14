@@ -50,10 +50,9 @@ const startBot = (valueApiKey, props, delayedResponse, model, responseSize) => {
 
 const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSize) => {
     console.log('[Chrome Extention] IMVU Bot: Started')
-    let chatHistory = [];
-    let botHistory = [];
     let debounceTimeout = null;
     let isFetching = false;
+    let history = []
     
     let messageListWrapper = document.querySelector('.message-list-wrapper');
 
@@ -76,33 +75,12 @@ const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSi
             let name = nameElement ? nameElement.textContent.trim() : '';
             let message = textElement ? textElement.textContent.trim() : '';
     
-            messagesArray.push({ name, message, role: 'user' });
+            messagesArray.push({ name, message, role: 'user', answered: false });
         });
     
         return messagesArray
     }
         
-    const generateMessagesArray = (chatHistory, botHistory) => {
-        let messagesArray = [];
-        
-        // Combine chat and bot messages into a single array
-        let combinedMessages = [...chatHistory, ...botHistory];
-        
-        // Sort the combined array based on the timestamp
-        combinedMessages.sort((a, b) => a.timestamp - b.timestamp);
-        // Generate messages array based on the sorted combined array
-        for (let i = 0; i < combinedMessages.length; i++) {
-            const message = combinedMessages[i];
-            if (message.role === "user") {
-                messagesArray.push({ role: "user", content: `${message.name}: ${message.message}` });
-            } else if (message.role === "assistant") {
-                messagesArray.push({ role: "assistant", content: message.message });
-            }
-        }
-
-        return messagesArray;
-    }
-
     const sendMessageInChat = ( message ) => {
         let inputTextElement = document.querySelector('.input-text');
         let sendButtonElement = document.querySelector('.btn-send');
@@ -119,7 +97,7 @@ const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSi
         }
     }
   
-    const fetchOpenAiBot = async (valueApiKey, props, chatHistory) => {
+    const fetchOpenAiBot = async (valueApiKey, props, history) => {
         if (isFetching) {
             console.log("[Chrome Extention] IMVU Bot: Request is already pending. Skipping...");
             return;
@@ -137,18 +115,14 @@ const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSi
                 model: model,
                 messages: [
                     { role: "system", content: props },
-                    ...generateMessagesArray(chatHistory, botHistory)
+                    ...history.map((item) => ({role: item.role, content: item.role === 'user' ? `${item.name}: ${item.message}` : item.message}))
                 ],
                 max_tokens: Number(responseSize),
-            }),
-        })
+            })})
             .then(response => response.json())
-            .then(data => {
-                const botMessage = data.choices[0].message.content.trim();
-                botHistory.push({name: 'Bot', role: 'assistant', message: botMessage, timestamp: Date.now()});
-                return botMessage;
-            })
+            .then(data => data.choices[0].message.content.trim())
             .then(message => {
+                history.push({name: 'Bot', role: 'assistant', message: message, timestamp: Date.now()})
                 sendMessageInChat(`BOT: ${message}`)
                 isFetching = false;
             })
@@ -158,36 +132,34 @@ const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSi
             });
     }
 
-    const debounceFetchOpenAiBot = (valueApiKey, props, chatHistory) => {
+    observer = new MutationObserver(() => {
+        console.log('[Chrome Extention] IMVU Bot: Trigger observer')
+
         if (debounceTimeout || isFetching) {
-            console.log('[Chrome Extention] IMVU Bot: Request is pending. Skipping...');
+            console.log('[Chrome Extention] IMVU Bot: Debounce. Skipping...');
             return;
         }
 
         clearTimeout(debounceTimeout);
 
         debounceTimeout = setTimeout(() => {
-            console.log('[Chrome Extention] IMVU Bot: Sending messages')
-            fetchOpenAiBot(valueApiKey, props, chatHistory);
+            let messagesFromChat = parseMessagesFromChat(messageListWrapper, '.is-presenter:not(.my-user)')
+            if (messagesFromChat.length > 0) {
+                const newMessages = messagesFromChat.filter(
+                    msg => !history.some(existingMsg => existingMsg.message === msg.message)
+                );
+    
+                if (newMessages.length > 0) {
+                    newMessages.forEach(msg => {
+                        msg.timestamp = Date.now();
+                        history.push(msg);
+                    });
+                    
+                    fetchOpenAiBot(valueApiKey, props, history)
+                }
+            }
             debounceTimeout = null;
         }, Number(delayedResponse + '000')); 
-    }
-
-    observer = new MutationObserver(() => {
-        let messagesFromChat = parseMessagesFromChat(messageListWrapper, '.is-presenter:not(.my-user)')
-        if (messagesFromChat.length > 0 && messagesFromChat.length > chatHistory.length) {
-            const newMessages = messagesFromChat.filter(
-                msg => !chatHistory.some(existingMsg => existingMsg.message === msg.message)
-            );
-
-            if (newMessages.length > 0) {
-                newMessages.forEach(msg => {
-                    msg.timestamp = Date.now();
-                    chatHistory.push(msg);
-                });       
-                debounceFetchOpenAiBot(valueApiKey, props, chatHistory);
-            }
-        }
     });
 
     let config = { subtree: true, childList: true };
