@@ -75,7 +75,7 @@ const startBotFunction = (valueApiKey, props, delayedResponse, model, responseSi
             let name = nameElement ? nameElement.textContent.trim() : '';
             let message = textElement ? textElement.textContent.trim() : '';
     
-            messagesArray.push({ name, message, role: 'user', answered: false });
+            messagesArray.push({ name, message, role: 'user' });
         });
     
         return messagesArray

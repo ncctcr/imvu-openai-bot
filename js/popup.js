@@ -1,9 +1,12 @@
 let toggleBot = document.getElementById("toggleBot");
 let botIsRunning = false
 
-chrome.runtime.sendMessage({ action: "checkBotStatus" }, function (response) {
-    updateToggleButton(response.botIsRunning);
+document.addEventListener("DOMContentLoaded", (event) => {
+    chrome.runtime.sendMessage({ action: "checkBotStatus" }, function (response) {
+        updateToggleButton(response.botIsRunning);
+    });    
 });
+
 
 toggleBot.addEventListener("click", () => {
     let model = document.getElementById("model").value
